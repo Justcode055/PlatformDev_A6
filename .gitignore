@@ -28,3 +28,6 @@ Desktop.ini
 *.pt
 *.onnx
 *.safetensors
+
+# Submission PDFs (do not push to GitHub)
+*.pdf

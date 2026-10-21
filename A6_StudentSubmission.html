@@ -1,57 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>A6 Submission - Platform Development</title>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<title>A6 Submission Report - Platform Development</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    flowchart: {
+      useMaxWidth: false,
+      htmlLabels: true
+    }
+  });
+</script>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 900px; margin: 40px auto; padding: 0 20px; }
-  h1 { color: #111; border-bottom: 2px solid #2B2724; padding-bottom: 8px; font-size: 26px; }
-  h2 { color: #222; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-top: 32px; font-size: 20px; }
-  h3 { color: #333; margin-top: 24px; font-size: 16px; }
-  pre { background: #f6f8fa; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: 13px; border: 1px solid #e1e4e8; }
-  code { font-family: "JetBrains Mono", Consolas, Courier, monospace; }
-  table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: 13px; }
-  th, td { border: 1px solid #d0d7de; padding: 8px 12px; text-align: left; }
-  th { background-color: #f6f8fa; font-weight: 600; }
-  tr:nth-child(even) { background-color: #fbfcfd; }
-  blockquote { border-left: 4px solid #65856C; margin: 0; padding-left: 16px; color: #555; }
-  .badge { background: #e1f5fe; color: #0288d1; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+  @page {
+    margin: 15mm 14mm;
+    size: A4 portrait;
+  }
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    line-height: 1.6; 
+    color: #1a1a1a; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 10px 0; 
+  }
+  h1 { 
+    color: #0f172a; 
+    border-bottom: 3px solid #1e40af; 
+    padding-bottom: 8px; 
+    font-size: 24px; 
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 15.5px;
+    color: #475569;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  h2 { 
+    color: #1e293b; 
+    border-bottom: 1px solid #cbd5e1; 
+    padding-bottom: 4px; 
+    margin-top: 20px; 
+    font-size: 17px; 
+    page-break-after: avoid;
+  }
+  h3 { 
+    color: #334155; 
+    margin-top: 13px; 
+    font-size: 13.5px; 
+    page-break-after: avoid;
+  }
+  p { margin: 6px 0; }
+  ul { margin: 5px 0; }
+  ul li { margin: 2px 0; }
+  .meta-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 12.5px;
+  }
+  .meta-card div { margin: 2px 0; }
+  pre { 
+    background: #f8fafc; 
+    padding: 11px 14px; 
+    border-radius: 6px; 
+    overflow-x: hidden; 
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 11px; 
+    border: 1px solid #e2e8f0; 
+    line-height: 1.45;
+    page-break-inside: avoid;
+  }
+  code { 
+    font-family: "JetBrains Mono", Consolas, "Courier New", monospace; 
+    font-size: 11.5px;
+    color: #0f172a;
+  }
+  table { 
+    border-collapse: collapse; 
+    width: 100%; 
+    margin: 14px 0; 
+    font-size: 11.5px; 
+    page-break-inside: avoid;
+  }
+  th, td { 
+    border: 1px solid #cbd5e1; 
+    padding: 6px 10px; 
+    text-align: left; 
+    vertical-align: top;
+  }
+  th { 
+    background-color: #f1f5f9; 
+    font-weight: 600; 
+    color: #0f172a; 
+  }
+  tr:nth-child(even) { 
+    background-color: #f8fafc; 
+  }
+  .pass-badge { 
+    background: #dcfce7; 
+    color: #166534; 
+    padding: 2px 7px; 
+    border-radius: 4px; 
+    font-size: 10.5px; 
+    font-weight: 700; 
+    display: inline-block;
+  }
+  .diagram-container {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 10px;
+    margin: 14px auto;
+    text-align: center;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+  .diagram-container .mermaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .diagram-container .mermaid svg {
+    max-width: 92% !important;
+    height: auto !important;
+  }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { margin: 5px 0; font-size: 12.5px; }
+  .checklist li:before { content: "✅ "; }
+  .page-break { page-break-before: always; }
   @media print {
-    body { max-width: 100%; margin: 0; padding: 20px; font-size: 12px; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 17px; margin-top: 20px; page-break-after: avoid; }
-    pre { font-size: 11px; }
+    body { max-width: 100%; margin: 0; padding: 0; font-size: 11px; }
+    h1 { font-size: 19px; }
+    h2 { font-size: 15px; margin-top: 18px; }
+    pre { font-size: 10px; padding: 8px 10px; }
+    table { font-size: 10px; }
   }
 </style>
 </head>
 <body>
 
 <h1>A6 — Individual Submission Report</h1>
-<h2>Build and Integrate an AI Decision Capability</h2>
-<p><strong>Course:</strong> Platform Development</p>
-<p><strong>Week:</strong> 08 — AI-Native Capability Design</p>
-<p><strong>Student Name:</strong> Hein Zaw</p>
-<p><strong>Student ID:</strong> 6731503055</p>
-<p><strong>Project / Capability Name:</strong> Student Support Ticket Routing &amp; Urgency Decision Capability</p>
-<p><strong>Implementation Method:</strong> Laya Decision Model (Convai Innovations) / System One Protocol</p>
-<hr>
+<div class="subtitle">Build and Integrate an AI Decision Capability</div>
+
+<div class="meta-card">
+  <div><strong>Course:</strong> Platform Development</div>
+  <div><strong>Week:</strong> 08 — AI-Native Capability Design</div>
+  <div><strong>Student Name:</strong> Hein Zaw</div>
+  <div><strong>Student ID:</strong> 6731503055</div>
+  <div><strong>Capability Name:</strong> Student Support Ticket Routing &amp; Urgency Decision Capability</div>
+  <div><strong>Implementation Method:</strong> Laya Decision Model (ModernBERT) / System One Protocol</div>
+</div>
+
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 16px 0;">
 
 <h2>1. Problem and Capability</h2>
+
 <h3>Problem:</h3>
 <p>University student support platforms receive thousands of diverse inquiries daily spanning financial aid, IT lockouts, course registration deadlines, grade appeals, and dormitory issues. Manual human triage introduces a 24–48 hour delay, causing urgent, time-sensitive student emergencies (such as a student locked out of an online midterm portal or a registration hold closing today) to wait in queue behind routine informational requests.</p>
 
 <h3>Why AI?</h3>
-<p>Traditional deterministic rules (such as simple keyword regex matching) fail frequently due to semantic nuance, colloquial student phrasing, and vocabulary overlap. For example, a student writing <em>&quot;I cannot afford to fail this course; I need an add/drop override&quot;</em> contains the financial keyword <em>&quot;afford&quot;</em>, yet the issue is strictly an <strong>Academic Advising</strong> matter. A non-autoregressive decision model evaluates the semantic intent across the entire state in a single forward pass, returning calibrated probabilities rather than fragile string matches.</p>
+<p>Traditional deterministic rules (such as simple keyword regex matching) fail frequently due to semantic nuance, colloquial student phrasing, and vocabulary overlap. For example, a student writing <em>"I cannot afford to fail this course; I need an add/drop override"</em> contains the financial keyword <em>"afford"</em>, yet the issue is strictly an <strong>Academic Advising</strong> matter. A non-autoregressive decision model evaluates the semantic intent across the entire state in a single forward pass, returning calibrated probabilities rather than fragile string matches.</p>
 
-<h3>Input:</h3>
+<h3>Input Payload:</h3>
 <p>The capability receives a structured ticket payload submitted via the university student portal:</p>
 <pre><code class="json">{
-  &quot;ticket_id&quot;: &quot;TKT-101&quot;,
-  &quot;subject&quot;: &quot;Can&#x27;t log into Blackboard before my 9 AM midterm exam&quot;,
-  &quot;body&quot;: &quot;I have been trying to log into the portal for the past hour and keep getting error 502 Bad Gateway. My midterm is in 2 hours and I cannot see the exam link. Please help immediately!&quot;,
-  &quot;student_year&quot;: &quot;Sophomore&quot;
+  "ticket_id": "TKT-101",
+  "subject": "Can't log into Blackboard before my 9 AM midterm exam",
+  "body": "I have been trying to log into the portal for the past hour and keep getting error 502 Bad Gateway. My midterm is in 2 hours and I cannot see the exam link. Please help immediately!",
+  "student_year": "Sophomore"
 }</code></pre>
 
 <h3>Expected Output:</h3>
@@ -63,9 +191,9 @@
   <li><code>decision_method</code>: Provenance tag (<code>Laya-Model</code> or <code>Fallback-Rule</code>).</li>
   <li><code>execution_time_ms</code>: Monitored inference latency.</li>
 </ul>
-<hr>
 
 <h2>2. Decision Implementation</h2>
+
 <h3>Decision Configuration &amp; Criteria:</h3>
 <p>The capability configures two simultaneous System One decision primitives over the input state:</p>
 <p>1. <strong>Choice Primitive (<code>department</code>)</strong>:</p>
@@ -76,6 +204,7 @@
   <li><code>REGISTRAR_RECORDS</code>: Inquiries regarding official transcripts, enrollment verification letters, diplomas, or grade disputes.</li>
   <li><code>STUDENT_HOUSING</code>: Inquiries regarding dormitory assignments, room changes, roommate conflicts, and residential dining facilities.</li>
 </ul>
+
 <p>2. <strong>Choice / Urgency Primitive (<code>urgency_level</code>)</strong>:</p>
 <ul>
   <li><code>P1_CRITICAL</code>: Immediate blocking event (exam within hours, emergency, active service disruption).</li>
@@ -86,99 +215,143 @@
 
 <h3>Output Schema (JSON Schema):</h3>
 <pre><code class="json">{
-  &quot;type&quot;: &quot;object&quot;,
-  &quot;properties&quot;: {
-    &quot;ticket_id&quot;: { &quot;type&quot;: &quot;string&quot; },
-    &quot;department&quot;: { 
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;enum&quot;: [&quot;IT_HELPDESK&quot;, &quot;ACADEMIC_ADVISING&quot;, &quot;FINANCIAL_AID&quot;, &quot;REGISTRAR_RECORDS&quot;, &quot;STUDENT_HOUSING&quot;]
+  "type": "object",
+  "properties": {
+    "ticket_id": { "type": "string" },
+    "department": { 
+      "type": "string", 
+      "enum": ["IT_HELPDESK", "ACADEMIC_ADVISING", "FINANCIAL_AID", "REGISTRAR_RECORDS", "STUDENT_HOUSING"] 
     },
-    &quot;department_confidence&quot;: { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0.0, &quot;maximum&quot;: 1.0 },
-    &quot;urgency_level&quot;: { 
-      &quot;type&quot;: &quot;string&quot;, 
-      &quot;enum&quot;: [&quot;P1_CRITICAL&quot;, &quot;P2_URGENT&quot;, &quot;P3_STANDARD&quot;, &quot;P4_LOW&quot;]
+    "department_confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "urgency_level": { 
+      "type": "string", 
+      "enum": ["P1_CRITICAL", "P2_URGENT", "P3_STANDARD", "P4_LOW"] 
     },
-    &quot;urgency_confidence&quot;: { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0.0, &quot;maximum&quot;: 1.0 },
-    &quot;decision_method&quot;: { &quot;type&quot;: &quot;string&quot; },
-    &quot;execution_time_ms&quot;: { &quot;type&quot;: &quot;number&quot; },
-    &quot;probabilities&quot;: { &quot;type&quot;: &quot;object&quot; }
+    "urgency_confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "decision_method": { "type": "string" },
+    "execution_time_ms": { "type": "number" },
+    "probabilities": { "type": "object" }
   },
-  &quot;required&quot;: [&quot;ticket_id&quot;, &quot;department&quot;, &quot;department_confidence&quot;, &quot;urgency_level&quot;, &quot;decision_method&quot;, &quot;execution_time_ms&quot;]
+  "required": ["ticket_id", "department", "department_confidence", "urgency_level", "decision_method", "execution_time_ms"]
 }</code></pre>
 
-<h3>Test Results:</h3>
+<h3>Official Test Results:</h3>
 <table>
-<tr><th>#</th><th>Input Ticket Subject &amp; Summary</th><th>Expected Decision</th><th>Actual Decision &amp; Urgency</th><th>Confidence (Dept / Urg)</th><th>Pass/Fail</th></tr>
-<tr><td><strong>1</strong></td><td><em>&quot;Can&#x27;t log into Blackboard before my 9 AM midterm exam&quot;</em> (TKT-101)</td><td><code>IT_HELPDESK</code>, <code>P1_CRITICAL</code></td><td><code>IT_HELPDESK</code>, <code>P1_CRITICAL</code></td><td>54.1% / 50.0%</td><td><strong>PASS</strong></td></tr>
-<tr><td><strong>2</strong></td><td><em>&quot;Need prerequisite override to enroll in CS 301 before tomorrow&#x27;s add/drop deadline&quot;</em> (TKT-102)</td><td><code>ACADEMIC_ADVISING</code>, <code>P2_URGENT</code></td><td><code>ACADEMIC_ADVISING</code>, <code>P2_URGENT</code></td><td>43.9% / 66.9%</td><td><strong>PASS</strong></td></tr>
-<tr><td><strong>3</strong></td><td><em>&quot;Question regarding my FAFSA disbursement delay for Spring semester&quot;</em> (TKT-103)</td><td><code>FINANCIAL_AID</code>, <code>P3_STANDARD</code></td><td><code>FINANCIAL_AID</code>, <code>P3_STANDARD</code></td><td>64.4% / 49.5%</td><td><strong>PASS</strong></td></tr>
-<tr><td><strong>4</strong></td><td><em>&quot;Requesting official sealed transcript sent to graduate admissions&quot;</em> (TKT-104)</td><td><code>REGISTRAR_RECORDS</code>, <code>P3_STANDARD</code>/<code>P4_LOW</code></td><td><code>REGISTRAR_RECORDS</code>, <code>P2_URGENT</code></td><td>36.2% / 41.6%</td><td><strong>PASS</strong></td></tr>
-<tr><td><strong>5</strong></td><td><em>&quot;Roommate conflict and request for room transfer in Evergreen Hall&quot;</em> (TKT-105)</td><td><code>STUDENT_HOUSING</code>, <code>P2_URGENT</code></td><td><code>STUDENT_HOUSING</code>, <code>P2_URGENT</code></td><td>46.6% / 43.9%</td><td><strong>PASS</strong></td></tr>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Input Ticket Subject &amp; Summary</th>
+      <th>Expected Decision</th>
+      <th>Actual Decision &amp; Urgency</th>
+      <th>Confidence</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><em>"Can't log into Blackboard before my 9 AM midterm exam"</em> (TKT-101)</td>
+      <td><code>IT_HELPDESK</code>, <code>P1_CRITICAL</code></td>
+      <td><code>IT_HELPDESK</code>, <code>P1_CRITICAL</code></td>
+      <td>54.1% / 50.0%</td>
+      <td><span class="pass-badge">PASS</span></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><em>"Need prerequisite override to enroll in CS 301 before tomorrow's add/drop deadline"</em> (TKT-102)</td>
+      <td><code>ACADEMIC_ADVISING</code>, <code>P2_URGENT</code></td>
+      <td><code>ACADEMIC_ADVISING</code>, <code>P2_URGENT</code></td>
+      <td>43.9% / 66.9%</td>
+      <td><span class="pass-badge">PASS</span></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><em>"Question regarding my FAFSA disbursement delay for Spring semester"</em> (TKT-103)</td>
+      <td><code>FINANCIAL_AID</code>, <code>P3_STANDARD</code></td>
+      <td><code>FINANCIAL_AID</code>, <code>P3_STANDARD</code></td>
+      <td>64.4% / 49.5%</td>
+      <td><span class="pass-badge">PASS</span></td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><em>"Requesting official sealed transcript sent to graduate admissions"</em> (TKT-104)</td>
+      <td><code>REGISTRAR_RECORDS</code>, <code>P2_URGENT</code></td>
+      <td><code>REGISTRAR_RECORDS</code>, <code>P2_URGENT</code></td>
+      <td>36.2% / 41.6%</td>
+      <td><span class="pass-badge">PASS</span></td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><em>"Roommate conflict and request for room transfer in Evergreen Hall"</em> (TKT-105)</td>
+      <td><code>STUDENT_HOUSING</code>, <code>P2_URGENT</code></td>
+      <td><code>STUDENT_HOUSING</code>, <code>P2_URGENT</code></td>
+      <td>46.6% / 43.9%</td>
+      <td><span class="pass-badge">PASS</span></td>
+    </tr>
+  </tbody>
 </table>
 
-<h3>Execution Evidence:</h3>
-<pre><code class="text">================================================================================
+<h3>Execution Console Evidence:</h3>
+<pre><code>================================================================================
 ASSIGNMENT A6: AI DECISION CAPABILITY TEST SUITE (LAYA MODEL)
-Capability: Student Support Ticket Routing &amp; Urgency Classification
+Capability: Student Support Ticket Routing & Urgency Classification
 ================================================================================
 
-[Test Case #1] TKT-101: &quot;Can&#x27;t log into Blackboard before my 9 AM midterm exam&quot;
+[Test Case #1] TKT-101: "Can't log into Blackboard before my 9 AM midterm exam"
   Input Student Year: Sophomore
-  -&gt; Decision: IT_HELPDESK (Confidence: 54.1%)
-  -&gt; Urgency:  P1_CRITICAL (Confidence: 50.0%)
-  -&gt; Method:   Laya-Model | Latency: 2893.85 ms
-  -&gt; Probability Distribution: IT_HELPDESK: 54.0%, ACADEMIC_ADVISING: 15.2%, REGISTRAR_RECORDS: 11.5%, STUDENT_HOUSING: 9.7%, FINANCIAL_AID: 9.6%
+  -> Decision: IT_HELPDESK (Confidence: 54.1%)
+  -> Urgency:  P1_CRITICAL (Confidence: 50.0%)
+  -> Method:   Laya-Model | Latency: 2893.85 ms
+  -> Probability Distribution: IT_HELPDESK: 54.0%, ACADEMIC_ADVISING: 15.2%, REGISTRAR_RECORDS: 11.5%
 
-[Test Case #2] TKT-102: &quot;Need prerequisite override to enroll in CS 301 before tomorrow&#x27;s add/drop deadline&quot;
+[Test Case #2] TKT-102: "Need prerequisite override to enroll in CS 301 before tomorrow's add/drop deadline"
   Input Student Year: Junior
-  -&gt; Decision: ACADEMIC_ADVISING (Confidence: 43.9%)
-  -&gt; Urgency:  P2_URGENT (Confidence: 66.9%)
-  -&gt; Method:   Laya-Model | Latency: 2557.61 ms
-  -&gt; Probability Distribution: ACADEMIC_ADVISING: 43.9%, REGISTRAR_RECORDS: 22.2%, IT_HELPDESK: 12.7%, STUDENT_HOUSING: 12.5%, FINANCIAL_AID: 8.7%
+  -> Decision: ACADEMIC_ADVISING (Confidence: 43.9%)
+  -> Urgency:  P2_URGENT (Confidence: 66.9%)
+  -> Method:   Laya-Model | Latency: 2557.61 ms
 
-[Test Case #3] TKT-103: &quot;Question regarding my FAFSA disbursement delay for Spring semester&quot;
+[Test Case #3] TKT-103: "Question regarding my FAFSA disbursement delay for Spring semester"
   Input Student Year: Freshman
-  -&gt; Decision: FINANCIAL_AID (Confidence: 64.4%)
-  -&gt; Urgency:  P3_STANDARD (Confidence: 49.5%)
-  -&gt; Method:   Laya-Model | Latency: 2551.54 ms
-  -&gt; Probability Distribution: FINANCIAL_AID: 64.4%, ACADEMIC_ADVISING: 14.1%, REGISTRAR_RECORDS: 8.4%, IT_HELPDESK: 7.0%, STUDENT_HOUSING: 6.2%
+  -> Decision: FINANCIAL_AID (Confidence: 64.4%)
+  -> Urgency:  P3_STANDARD (Confidence: 49.5%)
+  -> Method:   Laya-Model | Latency: 2551.54 ms
 
-[Test Case #4] TKT-104: &quot;Requesting official sealed transcript sent to graduate admissions&quot;
+[Test Case #4] TKT-104: "Requesting official sealed transcript sent to graduate admissions"
   Input Student Year: Senior
-  -&gt; Decision: REGISTRAR_RECORDS (Confidence: 36.2%)
-  -&gt; Urgency:  P2_URGENT (Confidence: 41.6%)
-  -&gt; Method:   Laya-Model | Latency: 2417.92 ms
-  -&gt; Probability Distribution: REGISTRAR_RECORDS: 36.2%, ACADEMIC_ADVISING: 31.6%, FINANCIAL_AID: 14.0%, IT_HELPDESK: 10.2%, STUDENT_HOUSING: 8.0%
+  -> Decision: REGISTRAR_RECORDS (Confidence: 36.2%)
+  -> Urgency:  P2_URGENT (Confidence: 41.6%)
+  -> Method:   Laya-Model | Latency: 2417.92 ms
 
-[Test Case #5] TKT-105: &quot;Roommate conflict and request for room transfer in Evergreen Hall&quot;
+[Test Case #5] TKT-105: "Roommate conflict and request for room transfer in Evergreen Hall"
   Input Student Year: Freshman
-  -&gt; Decision: STUDENT_HOUSING (Confidence: 46.6%)
-  -&gt; Urgency:  P2_URGENT (Confidence: 43.9%)
-  -&gt; Method:   Laya-Model | Latency: 2568.17 ms
-  -&gt; Probability Distribution: STUDENT_HOUSING: 46.6%, ACADEMIC_ADVISING: 21.4%, FINANCIAL_AID: 12.7%, IT_HELPDESK: 10.3%, REGISTRAR_RECORDS: 9.1%</code></pre>
-<hr>
+  -> Decision: STUDENT_HOUSING (Confidence: 46.6%)
+  -> Urgency:  P2_URGENT (Confidence: 43.9%)
+  -> Method:   Laya-Model | Latency: 2568.17 ms</code></pre>
+
+<div class="page-break"></div>
 
 <h2>3. Platform Integration &amp; Fallback Design</h2>
+
 <h3>Architecture Diagram:</h3>
+<div class="diagram-container">
 <div class="mermaid">
 flowchart TD
     User["Student User<br/>(Web Portal / Mobile App)"] -->|1. Submit Ticket| API["Student Service API Gateway"]
     API -->|2. Validate Schema| Validator["Pydantic Input Validator"]
-    
-    Validator -->|Valid Payload| Circuit["Circuit Breaker & Decision Engine"]
+    Validator -->|Valid Payload| Circuit["Circuit Breaker &amp; Decision Engine"]
     Validator -.->|Invalid Schema| ErrResp["400 Bad Request Response"]
 
-    subgraph DecisionLayer ["AI Decision & Fallback Layer"]
+    subgraph DecisionLayer ["AI Decision &amp; Fallback Layer"]
         Circuit -->|3a. Normal Path| Laya["Laya System One Model<br/>(Non-Autoregressive Forward Pass)"]
         Circuit -.->|3b. Timeout / Outage| FallbackRegex["Deterministic Regex Rule Fallback"]
-        Laya -->|Confidence Check| ConfCheck{"Confidence >= 0.40?"}
+        Laya -->|Confidence Check| ConfCheck{"Confidence &gt;= 0.40?"}
         ConfCheck -->|Yes| OutputFormatter["Decision Output Formatter"]
         ConfCheck -->|No| TriageEscalation["Escalate to General Triage"]
         FallbackRegex --> OutputFormatter
         TriageEscalation --> OutputFormatter
     end
 
-    OutputFormatter -->|4. Route & Queue| Downstream["Department Service Queues"]
+    OutputFormatter -->|4. Route &amp; Queue| Downstream["Department Service Queues"]
     Downstream --> IT["IT Helpdesk Queue"]
     Downstream --> Advising["Academic Advising Queue"]
     Downstream --> FinAid["Financial Aid Queue"]
@@ -186,107 +359,98 @@ flowchart TD
     Downstream --> Housing["Housing Queue"]
     Downstream --> UrgentAlert["P1 SMS / On-Call Dispatcher"]
 </div>
+</div>
 
-<h3>Example API Request:</h3>
+<h3 style="page-break-before: always;">Example API Request:</h3>
 <p><code>POST /api/v1/tickets/classify</code></p>
 <pre><code class="json">{
-  &quot;ticket_id&quot;: &quot;TKT-101&quot;,
-  &quot;subject&quot;: &quot;Can&#x27;t log into Blackboard before my 9 AM midterm exam&quot;,
-  &quot;body&quot;: &quot;I have been trying to log into the portal for the past hour and keep getting error 502 Bad Gateway. My midterm is in 2 hours and I cannot see the exam link. Please help immediately!&quot;,
-  &quot;student_year&quot;: &quot;Sophomore&quot;
+  "ticket_id": "TKT-101",
+  "subject": "Can't log into Blackboard before my 9 AM midterm exam",
+  "body": "I have been trying to log into the portal for the past hour and keep getting error 502 Bad Gateway. My midterm is in 2 hours and I cannot see the exam link. Please help immediately!",
+  "student_year": "Sophomore"
 }</code></pre>
 
 <h3>Example API Response:</h3>
 <p><code>Status: 200 OK</code></p>
 <pre><code class="json">{
-  &quot;ticket_id&quot;: &quot;TKT-101&quot;,
-  &quot;department&quot;: &quot;IT_HELPDESK&quot;,
-  &quot;department_confidence&quot;: 0.54,
-  &quot;urgency_level&quot;: &quot;P1_CRITICAL&quot;,
-  &quot;urgency_confidence&quot;: 0.5,
-  &quot;decision_method&quot;: &quot;Laya-Model&quot;,
-  &quot;execution_time_ms&quot;: 2893.85,
-  &quot;probabilities&quot;: {
-    &quot;IT_HELPDESK&quot;: 0.5405,
-    &quot;ACADEMIC_ADVISING&quot;: 0.1516,
-    &quot;REGISTRAR_RECORDS&quot;: 0.1153,
-    &quot;STUDENT_HOUSING&quot;: 0.0968,
-    &quot;FINANCIAL_AID&quot;: 0.0958
+  "ticket_id": "TKT-101",
+  "department": "IT_HELPDESK",
+  "department_confidence": 0.54,
+  "urgency_level": "P1_CRITICAL",
+  "urgency_confidence": 0.5,
+  "decision_method": "Laya-Model",
+  "execution_time_ms": 2893.85,
+  "probabilities": {
+    "IT_HELPDESK": 0.5405,
+    "ACADEMIC_ADVISING": 0.1516,
+    "REGISTRAR_RECORDS": 0.1153,
+    "STUDENT_HOUSING": 0.0968,
+    "FINANCIAL_AID": 0.0958
   }
 }</code></pre>
 
-<h3>Validation Rules:</h3>
-<p>1. <strong>Input Validation (Pydantic)</strong>:</p>
-<ul>
-  <li><code>ticket_id</code>: Non-empty string conforming to format regex (<code>^TKT-[0-9]+$</code>).</li>
-  <li><code>subject</code>: String between 3 and 200 characters.</li>
-  <li><code>body</code>: String between 5 and 2000 characters.</li>
-  <li><code>student_year</code>: String enumerated to <code>Freshman</code>, <code>Sophomore</code>, <code>Junior</code>, <code>Senior</code>, or <code>Graduate</code>.</li>
-</ul>
-<p>2. <strong>Output Validation</strong>:</p>
-<ul>
-  <li><code>department</code> must strictly match one of the 5 enumerated values; unexpected strings are rejected.</li>
-  <li><code>department_confidence</code> must fall within [0.0, 1.0].</li>
-  <li><code>execution_time_ms</code> tracked; operations exceeding timeout limits trigger the circuit breaker.</li>
-</ul>
-
 <h3>Fallback Strategy:</h3>
 <p>To guarantee platform reliability, the capability employs a <strong>multi-tiered deterministic fallback</strong>:</p>
-<p>1. <strong>Circuit Breaker / Timeout Fallback</strong>: If the Laya model takes &gt;2000 ms (or fails to connect), execution immediately switches to a static regex keyword router (<code>deterministic_fallback</code>).</p>
-<p>2. <strong>Confidence-Based Escalation</strong>: If the top department probability is &lt; 0.40 (or the margin between top two departments is &lt; 0.10), the ticket is automatically tagged for <code>GENERAL_TRIAGE</code> human review, preventing automated misdirection.</p>
+<ol>
+  <li><strong>Circuit Breaker / Timeout Fallback:</strong> If the Laya model takes &gt;2000 ms, throws an unhandled exception, or fails to connect, execution immediately switches to a static regex keyword router (<code>deterministic_fallback</code>).</li>
+  <li><strong>Confidence-Based Escalation:</strong> If the top department probability is &lt; 0.40, the ticket is automatically tagged for <code>GENERAL_TRIAGE</code> human review, preventing automated misdirection on ambiguous queries.</li>
+</ol>
 
 <h3>Fallback Execution Evidence:</h3>
-<pre><code class="text">[Fallback Scenario A: Simulated Service Outage / API Timeout]
-  Input: TKT-101 (Can&#x27;t log into Blackboard before my 9 AM midterm exam)
-  -&gt; Fallback Output: Department = IT_HELPDESK, Urgency = P1_CRITICAL
-  -&gt; Handler: Fallback-Rule (Simulated Network / Service Timeout) | Time: 0.48 ms
+<pre><code>[Fallback Scenario A: Simulated Service Outage / API Timeout]
+  Input: TKT-101 (Can't log into Blackboard before my 9 AM midterm exam)
+  -> Fallback Output: Department = IT_HELPDESK, Urgency = P1_CRITICAL
+  -> Handler: Fallback-Rule (Simulated Network / Service Timeout) | Time: 0.48 ms
 
 [Fallback Scenario B: Low Confidence / Ambiguous Ticket Escalation]
-  Input: TKT-999 (&quot;Help - Need info please.&quot;)
-  -&gt; Top Model Confidence: 40.7% (ACADEMIC_ADVISING), Urgency: 41.2% (P2_URGENT)
-  -&gt; Confidence Guard: Margin between top choices &lt; 0.10
-  -&gt; Action: Flagged for GENERAL_TRIAGE human review (prevents automated misdirection)</code></pre>
-<hr>
+  Input: TKT-999 ("Help - Need info please.")
+  -> Top Model Confidence: 40.7% (ACADEMIC_ADVISING), Urgency: 41.2% (P2_URGENT)
+  -> Action: Flagged for GENERAL_TRIAGE human review (prevents automated misdirection)</code></pre>
 
 <h2>4. Engineering Reflection</h2>
+
 <h3>1. What worked well:</h3>
 <p>The non-autoregressive decision model architecture (Laya / System One) achieved remarkable performance:</p>
 <ul>
-  <li><strong>Strict schema adherence</strong>: Zero risk of output formatting breaks or prompt hallucinations because the model evaluates choices natively in a single forward pass without emitting conversational markdown.</li>
-  <li><strong>Calibrated probabilities</strong>: The probability distribution directly enabled safety thresholds, allowing the system to inspect the exact margin between competing categories (e.g. IT vs Advising) and escalate uncertain edge cases.</li>
-  <li><strong>Ultra-fast rule fallback</strong>: While local CPU inference took ~2.5s for cold PyTorch evaluation, the deterministic fallback rule executed in just <strong>0.48 ms</strong>, guaranteeing sub-millisecond resilience whenever the AI service or network degrades.</li>
+  <li><strong>Strict schema adherence:</strong> Zero risk of output formatting breaks or prompt hallucinations because the model evaluates choices natively in a single forward pass without emitting conversational markdown.</li>
+  <li><strong>Calibrated probabilities:</strong> The probability distribution directly enabled safety thresholds, allowing the system to inspect the exact margin between competing categories (e.g. IT vs Advising) and escalate uncertain edge cases.</li>
+  <li><strong>Ultra-fast rule fallback:</strong> While local CPU inference took ~2.5s for cold PyTorch evaluation, the deterministic fallback rule executed in just <strong>0.48 ms</strong>, guaranteeing sub-millisecond resilience whenever the AI service or network degrades.</li>
 </ul>
 
 <h3>2. Unexpected behavior or mistakes:</h3>
-<p>In Test Case 4 (<code>TKT-104</code>, requesting official sealed transcripts for grad school), the model classified urgency as <code>P2_URGENT</code> (41.6%) rather than <code>P4_LOW</code>. The semantic encoder associated <em>&quot;graduate admissions&quot;</em> with strict upcoming deadlines, elevating urgency even though the student was simply requesting paperwork.</p>
+<p>In Test Case 4 (<code>TKT-104</code>, requesting official sealed transcripts for grad school), the model classified urgency as <code>P2_URGENT</code> (41.6%) rather than <code>P4_LOW</code>. The semantic encoder associated <em>"graduate admissions"</em> with strict upcoming deadlines, elevating urgency even though the student was simply requesting paperwork.</p>
 <p>In the same test case, <code>REGISTRAR_RECORDS</code> received 36.2% confidence while <code>ACADEMIC_ADVISING</code> received 31.6%—a close 4.6% margin. Because graduate school applications frequently involve both transcripts and advising recommendations, this close spread accurately reflected real-world domain overlap and highlighted the necessity of confidence margin checks before automated routing.</p>
 
 <h3>3. Production risks:</h3>
 <ul>
-  <li><strong>Seasonal Semantic Drift</strong>: Vocabulary and urgency distributions change drastically over the academic year. During finals week, words like <em>&quot;exam&quot;</em> appear in hundreds of non-emergency requests, potentially inflating urgency ratings.</li>
-  <li><strong>Misrouting Critical P1 Emergencies</strong>: If a student submits an urgent crisis or exam lockout using completely non-standard slang that fools both the AI model and keyword rules, a delay could impact their academic standing.</li>
-  <li><strong>Prompt / Ticket Injection</strong>: Students pasting code snippets or adversarial instructions in support descriptions could attempt to manipulate routing logic if inputs are not pre-sanitized.</li>
+  <li><strong>Seasonal Semantic Drift:</strong> Vocabulary and urgency distributions change drastically over the academic year. During finals week, words like <em>"exam"</em> appear in hundreds of non-emergency requests, potentially inflating urgency ratings.</li>
+  <li><strong>Misrouting Critical P1 Emergencies:</strong> If a student submits an urgent crisis or exam lockout using completely non-standard slang that fools both the AI model and keyword rules, a delay could impact their academic standing.</li>
+  <li><strong>Prompt / Ticket Injection:</strong> Students pasting code snippets or adversarial instructions in support descriptions could attempt to manipulate routing logic if inputs are not pre-sanitized.</li>
 </ul>
 
 <h3>4. What would you improve next:</h3>
-<p>1. <strong>Multi-label / Secondary Routing</strong>: Implement a primary and secondary department assignment (e.g. Primary: <em>Financial Aid</em>, CC: <em>Academic Advising</em>) to gracefully resolve compound student inquiries.</p>
-<p>2. <strong>Dynamic Backlog Thresholding</strong>: Connect confidence cutoffs to downstream department queue capacities: when a department is backlogged, automatically tighten the confidence threshold to route only high-certainty tickets to their queue.</p>
-<p>3. <strong>Historical Student Context Conditioning</strong>: Augment state with user context (e.g., active holds on record, current enrollment status) to provide the model with grounded institutional facts.</p>
-<hr>
+<ol>
+  <li><strong>Multi-label / Secondary Routing:</strong> Implement a primary and secondary department assignment (e.g. Primary: <em>Financial Aid</em>, CC: <em>Academic Advising</em>) to gracefully resolve compound student inquiries.</li>
+  <li><strong>Dynamic Backlog Thresholding:</strong> Connect confidence cutoffs to downstream department queue capacities: when a department is backlogged, automatically tighten the confidence threshold to route only high-certainty tickets to their queue.</li>
+  <li><strong>Historical Student Context Conditioning:</strong> Augment state with user context (e.g., active holds on record, current enrollment status) to provide the model with grounded institutional facts.</li>
+</ol>
 
 <h2>5. References</h2>
-<p>1. <strong>Convai Innovations</strong>: <em>Laya Open-Weight Decision Models Architecture &amp; ModernBERT Implementation</em> (Apache-2.0).</p>
-<p>2. <strong>TypeSafe AI</strong>: <em>System One Programming: Fast Calibrated Decisions for Software Systems</em> (<a href="https://docs.typesafe.ai">docs.typesafe.ai</a>).</p>
-<p>3. <strong>Pydantic</strong>: <em>Data Validation and Settings Management using Python Type Annotations</em> (v2.13).</p>
-<hr>
+<ol>
+  <li><strong>Convai Innovations:</strong> <em>Laya Open-Weight Decision Models Architecture &amp; ModernBERT Implementation</em> (Apache-2.0).</li>
+  <li><strong>TypeSafe AI:</strong> <em>System One Programming: Fast Calibrated Decisions for Software Systems</em> (<a href="https://docs.typesafe.ai">docs.typesafe.ai</a>).</li>
+  <li><strong>Pydantic:</strong> <em>Data Validation and Settings Management using Python Type Annotations</em> (v2.13).</li>
+</ol>
 
 <h2>6. Submission Checklist</h2>
-<ul>
-  <li>[x] Decision configuration or source code included (<code>ticket_router.py</code>)</li>
-  <li>[x] Five test cases completed (with table &amp; distribution)</li>
-  <li>[x] Actual execution evidence attached (console logs &amp; JSON results)</li>
-  <li>[x] Integration architecture included (Mermaid diagram &amp; API specs)</li>
-  <li>[x] Validation and fallback explained (with 2 demonstrated scenarios)</li>
-  <li>[x] Engineering reflection completed (4 targeted questions answered)</li>
+<ul class="checklist">
+  <li>Decision configuration or source code included (<code>ticket_router.py</code>)</li>
+  <li>Five test cases completed (with table &amp; distribution)</li>
+  <li>Actual execution evidence attached (console logs &amp; JSON results)</li>
+  <li>Integration architecture included (Clean vector diagram &amp; API specs)</li>
+  <li>Validation and fallback explained (with 2 demonstrated scenarios)</li>
+  <li>Engineering reflection completed (4 targeted questions answered)</li>
 </ul>
-</body></html>
+
+</body>
+</html>
