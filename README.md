@@ -120,10 +120,9 @@ If the model ever takes too long, crashes, or gets an ambiguous input like *"Hel
 ## 📂 Project Files Summary
 
 * **`ticket_router.py`**: The main Python application (contains both the AI model and interactive mode).
-* **`A6_6731503055.pdf`**: The completed 7-page assignment report ready for submission.
 * **`test_results.json`**: Saved live output from the 5 test cases.
-* **`A6_StudentSubmission.md`**: Markdown version of the submission report.
-* **`A6_StudentSubmission.html`**: HTML version of the submission report.
+* **`A6_StudentSubmission.md`**: Markdown version of the submission report with architecture diagrams and reflection.
+* **`A6_StudentSubmission.html`**: Formatted HTML version of the submission report.
 * **`README.md`**: This guide.
 
 ---
