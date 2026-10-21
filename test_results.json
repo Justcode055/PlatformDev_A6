@@ -1,0 +1,110 @@
+{
+  "tests": [
+    {
+      "ticket_id": "TKT-101",
+      "department": "IT_HELPDESK",
+      "department_confidence": 0.54,
+      "urgency_level": "P1_CRITICAL",
+      "urgency_confidence": 0.5,
+      "decision_method": "Laya-Model",
+      "execution_time_ms": 3081.2,
+      "probabilities": {
+        "IT_HELPDESK": 0.5405,
+        "ACADEMIC_ADVISING": 0.1516,
+        "FINANCIAL_AID": 0.0958,
+        "REGISTRAR_RECORDS": 0.1153,
+        "STUDENT_HOUSING": 0.0968
+      }
+    },
+    {
+      "ticket_id": "TKT-102",
+      "department": "ACADEMIC_ADVISING",
+      "department_confidence": 0.439,
+      "urgency_level": "P2_URGENT",
+      "urgency_confidence": 0.669,
+      "decision_method": "Laya-Model",
+      "execution_time_ms": 2367.4,
+      "probabilities": {
+        "IT_HELPDESK": 0.1271,
+        "ACADEMIC_ADVISING": 0.4394,
+        "FINANCIAL_AID": 0.087,
+        "REGISTRAR_RECORDS": 0.222,
+        "STUDENT_HOUSING": 0.1245
+      }
+    },
+    {
+      "ticket_id": "TKT-103",
+      "department": "FINANCIAL_AID",
+      "department_confidence": 0.644,
+      "urgency_level": "P3_STANDARD",
+      "urgency_confidence": 0.495,
+      "decision_method": "Laya-Model",
+      "execution_time_ms": 2356.55,
+      "probabilities": {
+        "IT_HELPDESK": 0.0702,
+        "ACADEMIC_ADVISING": 0.1405,
+        "FINANCIAL_AID": 0.6436,
+        "REGISTRAR_RECORDS": 0.084,
+        "STUDENT_HOUSING": 0.0617
+      }
+    },
+    {
+      "ticket_id": "TKT-104",
+      "department": "REGISTRAR_RECORDS",
+      "department_confidence": 0.362,
+      "urgency_level": "P2_URGENT",
+      "urgency_confidence": 0.416,
+      "decision_method": "Laya-Model",
+      "execution_time_ms": 2239.9,
+      "probabilities": {
+        "IT_HELPDESK": 0.1015,
+        "ACADEMIC_ADVISING": 0.3163,
+        "FINANCIAL_AID": 0.1404,
+        "REGISTRAR_RECORDS": 0.3618,
+        "STUDENT_HOUSING": 0.0801
+      }
+    },
+    {
+      "ticket_id": "TKT-105",
+      "department": "STUDENT_HOUSING",
+      "department_confidence": 0.466,
+      "urgency_level": "P2_URGENT",
+      "urgency_confidence": 0.439,
+      "decision_method": "Laya-Model",
+      "execution_time_ms": 2399.59,
+      "probabilities": {
+        "IT_HELPDESK": 0.103,
+        "ACADEMIC_ADVISING": 0.2138,
+        "FINANCIAL_AID": 0.1267,
+        "REGISTRAR_RECORDS": 0.0906,
+        "STUDENT_HOUSING": 0.466
+      }
+    }
+  ],
+  "fallback_timeout": {
+    "ticket_id": "TKT-101",
+    "department": "IT_HELPDESK",
+    "department_confidence": 0.5,
+    "urgency_level": "P1_CRITICAL",
+    "urgency_confidence": 0.5,
+    "decision_method": "Fallback-Rule (Simulated Network / Service Timeout)",
+    "execution_time_ms": 0.46,
+    "probabilities": null
+  },
+  "fallback_ambiguous": {
+    "ticket_id": "TKT-999",
+    "department": "ACADEMIC_ADVISING",
+    "department_confidence": 0.407,
+    "urgency_level": "P2_URGENT",
+    "urgency_confidence": 0.412,
+    "decision_method": "Laya-Model",
+    "execution_time_ms": 1893.69,
+    "probabilities": {
+      "IT_HELPDESK": 0.1391,
+      "ACADEMIC_ADVISING": 0.4069,
+      "FINANCIAL_AID": 0.1592,
+      "REGISTRAR_RECORDS": 0.1464,
+      "STUDENT_HOUSING": 0.1484
+    }
+  }
+}
